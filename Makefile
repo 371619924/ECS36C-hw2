@@ -1,11 +1,13 @@
 CC = g++
 CFLAGS = -Wall -Wextra -O2
 TARGET = postfix_eval
+SRC = postfix_eval.cc
+HEADERS = deque.h
 
 all: $(TARGET)
 
-$(TARGET): postfix_eval.cc
-	$(CC) $(CFLAGS) -o $(TARGET) postfix_eval.cc
+$(TARGET): $(SRC) $(HEADERS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
 
 clean:
 	rm -f $(TARGET)
