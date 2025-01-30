@@ -64,16 +64,10 @@ bool EvaluatePostfixExpression(const std::string& expression, double& result) {
         } else if (token == "+" || token == "-" || token == "*" || token == "/") {
             // 处理运算符
             double b, a;
-            if (!stack.Pop() || !stack.Peek(b)) {
+            if (!stack.Peek(b) || !stack.Pop() || !stack.Peek(a) || !stack.Pop()) {
                 std::cerr << "Error: invalid expression\n";
                 return false;
             }
-            stack.Pop();
-            if (!stack.Peek(a)) {
-                std::cerr << "Error: invalid expression\n";
-                return false;
-            }
-            stack.Pop();
             
             if (token == "+") stack.Push(a + b);
             else if (token == "-") stack.Push(a - b);
