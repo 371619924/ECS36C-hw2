@@ -3,47 +3,7 @@
 #include <cctype>
 #include <iomanip>
 #include <string>
-
-// 自定义栈实现
-class Stack {
-private:
-    struct Node {
-        double value;
-        Node* next;
-        Node(double val, Node* nxt) : value(val), next(nxt) {}
-    };
-    Node* top;
-
-public:
-    Stack() : top(nullptr) {}
-    ~Stack() {
-        while (!IsEmpty()) {
-            Pop();
-        }
-    }
-    
-    bool IsEmpty() const {
-        return top == nullptr;
-    }
-    
-    void Push(double value) {
-        top = new Node(value, top);
-    }
-    
-    bool Pop() {
-        if (IsEmpty()) return false;
-        Node* temp = top;
-        top = top->next;
-        delete temp;
-        return true;
-    }
-    
-    bool Peek(double& value) const {
-        if (IsEmpty()) return false;
-        value = top->value;
-        return true;
-    }
-};
+#include "stack.h"  // 引入自定义栈头文件
 
 bool EvaluatePostfixExpression(const std::string& expression, double& result) {
     Stack stack;
