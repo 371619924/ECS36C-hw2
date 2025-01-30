@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <cctype>
+#include <iomanip>
 #include <string>
 
 // 自定义栈实现
@@ -99,7 +100,10 @@ int main() {
         if (line.empty()) continue;
         double result;
         if (EvaluatePostfixExpression(line, result)) {
-            std::cout << result << "\n";
+            std::cout << std::fixed << std::setprecision(5) << result << "\n";
+        } else {
+            // 错误输出已经在 EvaluatePostfixExpression 中处理
+            continue;
         }
     }
     std::cout << "Bye!" << std::endl;
