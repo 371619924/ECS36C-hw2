@@ -36,21 +36,21 @@ TEST(Deque, DoubleInsertionBackFront) {
   EXPECT_EQ(dq.Back(), 23);
 }
 
-// 测试 Front() 和 Back() 异常
+//  Front() and Back() 
 TEST(Deque, FrontBackException) {
   Deque<int> dq;
   EXPECT_THROW(dq.Front(), std::runtime_error);
   EXPECT_THROW(dq.Back(), std::runtime_error);
 }
 
-// 测试 operator[] 超出范围异常
+// operator[] 
 TEST(Deque, OutOfRange) {
   Deque<int> dq;
   dq.PushBack(10);
   EXPECT_THROW(dq[1], std::out_of_range);
 }
 
-// 测试多个 PushFront + PushBack
+// PushFront + PushBack
 TEST(Deque, MultiplePush) {
   Deque<int> dq;
   for (int i = 1; i <= 5; i++) dq.PushFront(i); // 5 4 3 2 1
@@ -61,7 +61,7 @@ TEST(Deque, MultiplePush) {
   EXPECT_EQ(dq.Back(), 10);
 }
 
-// 测试 PopFront 和 PopBack
+// PopFront and PopBack
 TEST(Deque, PopUntilEmpty) {
   Deque<int> dq;
   for (int i = 1; i <= 5; i++) dq.PushBack(i);
@@ -74,20 +74,20 @@ TEST(Deque, PopUntilEmpty) {
   EXPECT_TRUE(dq.Empty());
 }
 
-// 测试扩容
+
 TEST(Deque, ResizeUp) {
   Deque<int> dq;
-  for (int i = 0; i < 20; i++) dq.PushBack(i); // 触发扩容
+  for (int i = 0; i < 20; i++) dq.PushBack(i); 
   EXPECT_EQ(dq.Size(), 20);
   EXPECT_EQ(dq.Front(), 0);
   EXPECT_EQ(dq.Back(), 19);
 }
 
-// 测试 ShrinkToFit
+// ShrinkToFit
 TEST(Deque, Shrink) {
   Deque<int> dq;
-  for (int i = 0; i < 16; i++) dq.PushBack(i); // 扩容到 16
-  for (int i = 0; i < 12; i++) dq.PopFront();  // 触发缩容
+  for (int i = 0; i < 16; i++) dq.PushBack(i); 
+  for (int i = 0; i < 12; i++) dq.PopFront();  
   dq.ShrinkToFit();
   EXPECT_EQ(dq.Size(), 4);
   EXPECT_EQ(dq.Front(), 12);
