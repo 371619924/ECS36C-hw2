@@ -3,7 +3,7 @@
 #include <cctype>
 #include <iomanip>
 #include <string>
-#include "stack.h"  // 引入自定义栈头文件
+#include "stack.h"  
 
 bool EvaluatePostfixExpression(const std::string& expression, double& result) {
     Stack stack;
@@ -13,7 +13,7 @@ bool EvaluatePostfixExpression(const std::string& expression, double& result) {
     
     while (tokens >> token) {
         if (isdigit(token[0]) || (token[0] == '-' && token.size() > 1) || token.find('.') != std::string::npos) {
-            // 处理数字
+            
             try {
                 double num = std::stod(token);
                 stack.Push(num);
@@ -23,7 +23,7 @@ bool EvaluatePostfixExpression(const std::string& expression, double& result) {
                 return false;
             }
         } else if (token == "+" || token == "-" || token == "*" || token == "/") {
-            // 处理运算符
+            
             double b, a;
             if (!stack.Peek(b) || !stack.Pop() || !stack.Peek(a) || !stack.Pop()) {
                 std::cerr << "Error: invalid expression\n";
@@ -62,7 +62,7 @@ int main() {
         if (EvaluatePostfixExpression(line, result)) {
             std::cout << std::fixed << std::setprecision(5) << result << "\n";
         } else {
-            // 错误输出已经在 EvaluatePostfixExpression 中处理
+            
             continue;
         }
     }
