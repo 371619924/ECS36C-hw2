@@ -66,6 +66,25 @@ class Deque {
 
 // ================= Implementation =================
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Constructor: Initializes the deque with a capacity of 8 and sets size, head, and tail to 0.
 template<typename T>
 Deque<T>::Deque() : capacity_(8), size_(0), head_(0), tail_(0) {
